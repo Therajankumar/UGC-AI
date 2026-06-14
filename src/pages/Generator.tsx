@@ -151,7 +151,7 @@ const Generator = () => {
   const [productImage, setProductImage] = useState<File | null>(null);
   const [modelImage, setModelImage] = useState<File | null>(null);
   const [userPrompt, setUserPrompt] = useState("");
-  const [isGenerating, setIsGenerating] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   // Handle file upload
   const handleFileChange = (
