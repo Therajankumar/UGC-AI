@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -71,3 +72,7 @@ export default defineConfig([
   },
 ])
 ```
+=======
+# UGC-AI
+An ai sass for ugc ads creation
+>>>>>>> 165666971c2e681d46ec66ecbdc3d6e01f7f9a3a
