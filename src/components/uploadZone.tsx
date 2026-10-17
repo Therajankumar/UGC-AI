@@ -1,10 +1,19 @@
 import { UploadIcon, XIcon } from "lucide-react"
+import { useEffect, useMemo } from "react"
 import type { uploadZoneprops } from "../types"
 
 
-const uploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
+const UploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
+  // create the preview URL once per file and release it when the file changes
+  const previewUrl = useMemo(() => (file ? URL.createObjectURL(file) : null), [file])
+  useEffect(() => {
+    return () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl)
+    }
+  }, [previewUrl])
+
   return (
-    <div className="ralative group">
+    <div className="relative group">
       <div className={`relative h-64 rounded-2xl border-2
         border-dashed transition-all duration-300 flex flex-col
         items-center justify-center bg-white/2 p-6 ${file ? 'border-violet-600/50 bg-violet-500/5':
@@ -12,10 +21,10 @@ const uploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
         }`}>
           {file ? (
             <>
-            <img src={URL.createObjectURL(file)} alt="preview"
-            className="absolute insert-0 w-full h-full object-cover rounded-xl
+            <img src={previewUrl ?? undefined} alt="preview"
+            className="absolute inset-0 w-full h-full object-cover rounded-xl
             opacity-60"/>
-            <div className="absolute insert-0 flex items-center justify-center
+            <div className="absolute inset-0 flex items-center justify-center
             opacity-0 group-hover:opacity-100 transition-opacity bg-black/40
             rounded-xl backdrop-blur-sm">
                 <button type="button" onClick={onClear} className="p-2 rounded-full
@@ -27,7 +36,7 @@ const uploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
             </div>
             <div className="absolute bottom-4 left-4 right-4 bg-black/50
             backdrop-blur-md p-3 rounded-lg border border-white/10">
-                <p className="text-sm font-meddium truncate">{file.name}</p>
+                <p className="text-sm font-medium truncate">{file.name}</p>
             </div>
             </>
           ) :(
@@ -41,7 +50,7 @@ const uploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
             <h3 className="text-lg font-semibold mb-2">{label}</h3>
             <p className="text-sm text-gray-400 text-center max-w-[200px]">Drag & drop or click to upload</p>
             <input type="file" accept="image/*" onChange={onChange}
-            className="absolute insert-0 w-full h-full opacity-0 cursor-pointer"/>
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"/>
             </>
           )}
 
@@ -50,4 +59,4 @@ const uploadZone = ({label ,file ,onClear,onChange}:uploadZoneprops) => {
   )
 }
 
-export default uploadZone
+export default UploadZone

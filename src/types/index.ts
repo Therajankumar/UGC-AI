@@ -32,6 +32,6 @@ export interface Projects {
     error?:string;
     createdAt:Date | string;
     updatedAt?:Date | string;
-    uploadImages :string[];
+    uploadedImages:string[];
 
 }

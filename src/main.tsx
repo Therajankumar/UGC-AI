@@ -15,8 +15,7 @@ createRoot(document.getElementById('root')! as HTMLElement).render(
     appearance={{
         theme :dark,
         variables:{
-            colorPrimary:'#4f39f6',
-            colorTextOnPrimaryBackground:'#ffffff'
+            colorPrimary:'#4f39f6'
         }
     }
 
