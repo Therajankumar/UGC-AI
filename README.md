@@ -19,7 +19,10 @@ An AI SaaS for creating UGC (user-generated content) ads. Upload a product image
 
 ## Getting started
 
+The frontend lives in `client/`:
+
 ```bash
+cd client
 npm install
 cp .env.example .env   # then add your Clerk publishable key
 npm run dev
@@ -31,7 +34,15 @@ npm run dev
 | --- | --- |
 | `VITE_CLERK_PUBLISHABLE_KEY` | Publishable key from your Clerk dashboard |
 
+## Project structure
+
+```
+client/   React frontend (Vite)
+```
+
 ## Scripts
+
+Run these from `client/`.
 
 | Command | Description |
 | --- | --- |

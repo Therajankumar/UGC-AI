@@ -46,7 +46,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <p className="py-3 text-center text-sm text-gray-400">
+                <p className="py-4 text-center text-sm text-gray-400">
                     © {new Date().getFullYear()} {' '}
                     
                        MADE WITH LOVE BY RAJAN THAKUR. All rights reserved.
