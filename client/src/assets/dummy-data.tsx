@@ -109,3 +109,8 @@ export const footerLinks = [
         ]
     }
 ];
+// credits charged per generation, keep in sync with the backend
+export const creditCosts = {
+    image: 5,
+    video: 10,
+};

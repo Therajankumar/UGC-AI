@@ -1,137 +1,3 @@
-
-// import { useState } from "react"
-// import Title from "../components/Title"
-// import UploadZone from "../components/uploadZone"
-// import { Loader2Icon, RectangleHorizontalIcon, RectangleVerticalIcon, Wand2Icon } from "lucide-react";
-// import { PrimaryButton } from "../components/Buttons";
-
-// const Generator = () => {
-
-//   const [name ,setName] =useState('');
-//   const [ProductName ,setProductName] =useState('');
-//   const [productDescription ,setproductDescription] =useState('');
-//   const [aspectRatio ,setAspectRatio] =useState('9:16');
-//   const [productImage ,setproductImage] =useState<File | null>(null);
-//   const [modelImage ,setModelImage] =useState<File | null>(null);
-//  const [userPrompt, setUserPrompt] = useState('');
-// const [isGenerating, setIsGenerating] = useState(false);
- 
-//   //handle file change i.e either file is uploaded and if uploaded then where to update
-//   const handleFileChange =(e : React.ChangeEvent<HTMLInputElement>,type:
-//     'product' | 'model') =>{
-//         if(e.target.files && e.target.files[0]){
-//           if(type === 'product') setproductImage(e.target.files[0]);
-//           else setModelImage(e.target.files[0])
-//         }
-//     }
-
-//     //complete this function after backend is done 
-//   const handleGenerate =async(e:React.FormEvent<HTMLFormElement>)=>{
-//     e.preventDefault();
-//   }
-
-
-
-//   return (
-//     <div className="min-h-screen text-white p-6 md:p-12 mt-28">
-
-//       <form onSubmit={handleGenerate} className="max-w-4xl mx-auto mb-40">
-//         <Title heading='create In-context Image' description="upload
-//         your model and product images to generate stunning UGC,
-//         Short-form videos and social media posts"/>
-
-//       <div className="flex gap-20 max-sm:flex-col items-start
-//       justify-between">
-      
-//         {/*left col */}
-//         <div className="flex flex-col w-full sm:max-w-60 gap-8 mt-8
-//         mb-12">
-//             <UploadZone label="Product Image" file={productImage} onClear ={()=>
-//               setproductImage(null)} onChange={(e)=>handleFileChange(e,'product')}/>
-//             <UploadZone label="Model Image" file={modelImage} onClear ={()=>
-//               setModelImage(null)} onChange={(e)=>handleFileChange(e,'model')}/>
-//         </div>
-            
-//         {/*Right col */}
-//         <div className="w-full">
-//           <div className="mb-4 text-gray-300">
-//             <label htmlFor="name" className="block text-sm mb-4">Project Name</label>
-//             <input type="text" id="name" value={name} onChange={(e)=>setName(e.
-//               target.value)} placeholder="Name your Project" required 
-//               className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm
-//               border-violet-200/10 focus:border-violet-500/50 outline-none
-//               transition-all"/>
-//           </div>
-//           <div className="mb-4 text-gray-300">
-//             <label htmlFor="productName" className="block text-sm mb-4">Product Name</label>
-//             <input type="text" id="productName" value={ProductName} onChange={(e)=>setProductName(e.
-//               target.value)} placeholder="Enter the name of the product" required 
-//               className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm
-//               border-violet-200/10 focus:border-violet-500/50 outline-none
-//               transition-all"/>
-//           </div>
-//           <div className="mb-4 text-gray-300">
-//             <label htmlFor="productDescription" className="block text-sm mb-4">Product Description 
-//               <span className="text-xs text-violet-400">(optional)</span>
-//             </label>
-            
-//             <textarea id="productDescription" rows={4} value={productDescription}
-//             onChange={(e)=>setproductDescription(e.target.value)}
-//             placeholder="Enter the description of the product"
-//             className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm
-//             border-violet-200/10 focus:border-violet-500/50 outline-none
-//             resize-none transition-all"/>
-//           </div>
-            
-//           <div className="mb-4 text-gray-300">
-//             <label className="block text-sm mb-4">Aspect Ratio</label>
-//             <div className="flex gap-3">
-//               <RectangleVerticalIcon onClick={()=>setAspectRatio('9:16')}
-//               className={`p-2.5 size-13 bg-white/6 rounded transition-all ring-2
-//                 ring-transparent cursor-pointer ${aspectRatio ==='9:16' ? 
-//                   'ring-violet-500/50 bg-white' : ''}`}/>
-//               <RectangleHorizontalIcon onClick={()=>setAspectRatio('16:9')}
-//               className={`p-2.5 size-13 bg-white/6 rounded transition-all ring-2
-//                 ring-transparent cursor-pointer ${aspectRatio ==='16:9' ? 
-//                   'ring-violet-500/50 bg-white' : ''}`}/>
-//             </div>
-//           </div>
-//           <div className="mb-4 text-gray-300">
-//             <label htmlFor="userPrompt" className="block text-sm mb-4">user Prompt 
-//               <span className="text-xs text-violet-400">(optional)</span>
-//             </label>
-            
-//             <textarea id="userPrompt" rows={4} value={productDescription}
-//             onChange={(e)=>setuserPrompt(e.target.value)}
-//             placeholder="Describe how you want the narration to be "
-//             className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm
-//             border-violet-200/10 focus:border-violet-500/50 outline-none
-//             resize-none transition-all"/>
-//           </div>
-
-//         </div>
-//       </div>
-//        <div className="flex justify-center mt-10">
-//         <PrimaryButton disabled ={isgenerating} className="px-10 py-3 rounded-md
-//         disabled:opacity-70 disabled:cursor-not-allowed">
-//           { isgenerating ? (
-//             <>
-//             <Loader2Icon className="size-5 animate-spin"/> Generating...
-//             </>
-//           ): (
-//           <>
-//           <Wand2Icon className="size-5" /> generate Image
-//           </>
-//         )}
-//         </PrimaryButton>
-//        </div>
-//       </form>
-//     </div>
-//   )
-// }
-
-// export default Generator
-
 import { useState } from "react";
 import Title from "../components/Title";
 import UploadZone from "../components/uploadZone";
@@ -152,6 +18,7 @@ const Generator = () => {
   const [modelImage, setModelImage] = useState<File | null>(null);
   const [userPrompt, setUserPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState("");
 
   // Handle file upload
   const handleFileChange = (
@@ -167,6 +34,11 @@ const Generator = () => {
   // Handle generate (to be connected with backend)
   const handleGenerate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!productImage || !modelImage) {
+      setError("Please upload both a product image and a model image.");
+      return;
+    }
+    setError("");
     setIsGenerating(true);
 
     // TODO: Add API call here
@@ -258,23 +130,25 @@ const Generator = () => {
             <div className="mb-4 text-gray-300">
               <label className="block text-sm mb-4">Aspect Ratio</label>
               <div className="flex gap-3">
-                <RectangleVerticalIcon
-                  onClick={() => setAspectRatio("9:16")}
-                  className={`p-2.5 size-13 bg-white/6 rounded transition-all ring-2 cursor-pointer ${
-                    aspectRatio === "9:16"
-                      ? "ring-violet-500/50 bg-white"
-                      : "ring-transparent"
-                  }`}
-                />
-
-                <RectangleHorizontalIcon
-                  onClick={() => setAspectRatio("16:9")}
-                  className={`p-2.5 size-13 bg-white/6 rounded transition-all ring-2 cursor-pointer ${
-                    aspectRatio === "16:9"
-                      ? "ring-violet-500/50 bg-white"
-                      : "ring-transparent"
-                  }`}
-                />
+                {[
+                  { ratio: "9:16", label: "Vertical (9:16)", Icon: RectangleVerticalIcon },
+                  { ratio: "16:9", label: "Horizontal (16:9)", Icon: RectangleHorizontalIcon },
+                ].map(({ ratio, label, Icon }) => (
+                  <button
+                    key={ratio}
+                    type="button"
+                    aria-label={label}
+                    aria-pressed={aspectRatio === ratio}
+                    onClick={() => setAspectRatio(ratio)}
+                    className={`p-2.5 rounded transition-all ring-2 ${
+                      aspectRatio === ratio
+                        ? "ring-violet-500/50 bg-violet-500/20 text-white"
+                        : "ring-transparent bg-white/6 text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    <Icon className="size-8" />
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -295,6 +169,10 @@ const Generator = () => {
             </div>
           </div>
         </div>
+
+        {error && (
+          <p role="alert" className="text-center text-sm text-red-400 mt-6">{error}</p>
+        )}
 
         {/* Button */}
         <div className="flex justify-center mt-10">

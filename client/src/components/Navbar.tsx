@@ -1,4 +1,4 @@
-import { DollarSignIcon, FolderEditIcon, GalleryHorizontalEnd, MenuIcon, SparkleIcon, XIcon } from 'lucide-react';
+import { CoinsIcon, DollarSignIcon, FolderEditIcon, GalleryHorizontalEnd, MenuIcon, SparkleIcon, XIcon } from 'lucide-react';
 import { GhostButton, PrimaryButton } from './Buttons';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Home', href: '/#' },
+        { name: 'Home', href: '/' },
         { name: 'Create', href: '/generate' },
         { name: 'Community', href: '/community' },
         { name: 'Plans', href: '/plans' },
@@ -47,9 +47,10 @@ export default function Navbar() {
                     <PrimaryButton onClick={()=>openSignUp()} className='max-sm:text-xs hidden sm:inline-block'>Get Started</PrimaryButton>
                 </div>
                  ) : (
-                    <div className='flex gap-2'>
+                    <div className='flex items-center gap-2'>
+                    {/* TODO: show the user's credit balance once the backend is ready */}
                     <GhostButton onClick={()=>navigate('/plans')} className='border-none text-gray-300 sm:py-1.5'>
-                       credits:
+                       <CoinsIcon size={16}/> Credits
                     </GhostButton>
             
                       <UserButton>
@@ -64,7 +65,7 @@ export default function Navbar() {
                             <UserButton.Action label ='Community' labelIcon=
                             {<GalleryHorizontalEnd size={14}/>} onClick={()=>navigate('/community')}/>
                             
-                            <UserButton.Action label ='plans' labelIcon=
+                            <UserButton.Action label ='Plans' labelIcon=
                             {<DollarSignIcon size={14}/>} onClick={()=>navigate('/plans')}/>
 
                         </UserButton.MenuItems>
@@ -72,30 +73,31 @@ export default function Navbar() {
                         </div>
                  )}
 
-                {/* <div className='hidden md:flex items-center gap-3'>
-                    <button onClick={()=>openSignIn()} className='text-sm font-medium text-gray-300 hover:text-white transition max-sm:hidden'>
-                        Sign in
-                    </button>
-                    <PrimaryButton onClick={()=>openSignUp()} className='max-sm:text-xs hidden sm:inline-block'>Get Started</PrimaryButton>
-                </div> */}
-                
-               {!user &&  <button onClick={() => setIsOpen(!isOpen)} className='md:hidden'>
+                <button onClick={() => setIsOpen(!isOpen)} className='md:hidden' aria-label='Open menu'>
                     <MenuIcon className='size-6' />
-                </button>}
+                </button>
 
                 
             </div>
             <div className={`flex flex-col items-center justify-center gap-6 text-lg font-medium fixed inset-0 bg-black/40 backdrop-blur-md z-50 transition-all duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
                 {navLinks.map((link) => (
-                    <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}>
+                    <Link key={link.name} to={link.href} onClick={() => {setIsOpen(false);scrollTo(0,0)}}>
                         {link.name}
-                    </a>
+                    </Link>
                 ))}
 
-                <button onClick={() => {setIsOpen(false);openSignIn()}} className='font-medium text-gray-300 hover:text-white transition'>
-                    Sign in
-                </button>
-                <PrimaryButton onClick={() => {setIsOpen(false);openSignUp()}}>Get Started</PrimaryButton>
+                {user ? (
+                    <Link to='/my-generations' onClick={() => setIsOpen(false)}>
+                        My Generations
+                    </Link>
+                ) : (
+                    <>
+                        <button onClick={() => {setIsOpen(false);openSignIn()}} className='font-medium text-gray-300 hover:text-white transition'>
+                            Sign in
+                        </button>
+                        <PrimaryButton onClick={() => {setIsOpen(false);openSignUp()}}>Get Started</PrimaryButton>
+                    </>
+                )}
 
                 <button
                     onClick={() => setIsOpen(false)}

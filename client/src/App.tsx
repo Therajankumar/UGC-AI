@@ -10,6 +10,8 @@ import Mygenerations from './pages/Mygenerations';
 import Plans from './pages/Plans';
 import Loading from './pages/Loading';
 import Community from './pages/community';
+import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 	return (
@@ -19,12 +21,13 @@ function App() {
 			<Navbar />
 			<Routes> 
 				<Route path='/' element={<Home />}/>
-				<Route path='/generate' element={<Generator />}/>
-				<Route path='/result/:projectId' element={<Result />}/>
-				<Route path='/my-generations' element={<Mygenerations />}/>
+				<Route path='/generate' element={<ProtectedRoute><Generator /></ProtectedRoute>}/>
+				<Route path='/result/:projectId' element={<ProtectedRoute><Result /></ProtectedRoute>}/>
+				<Route path='/my-generations' element={<ProtectedRoute><Mygenerations /></ProtectedRoute>}/>
 				<Route path='/plans' element={<Plans />}/>
 				<Route path='/loading' element={<Loading/>}/>
 				<Route path='/community' element={<Community />} />
+				<Route path='*' element={<NotFound />} />
 
 
 			</Routes>
