@@ -25,8 +25,8 @@ export default function CTA() {
                             viewport={{ once: true }}
                             transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1, delay: 0.2 }}
                         >
-                           Join thousands of brands creating viral UGC with AI.
-                           No credit card required .start creating now.
+                           Upload your product, pick a model and let AI create
+                           scroll-stopping UGC ads in seconds.
                         </motion.p>
                         <motion.div
                             initial={{ y: 60, opacity: 0 }}

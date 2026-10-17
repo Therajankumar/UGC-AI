@@ -1,14 +1,8 @@
-import { ArrowRightIcon, PlayIcon, ZapIcon, CheckIcon } from 'lucide-react';
+import { ArrowRightIcon, PlayIcon, ZapIcon, CheckIcon, SparklesIcon } from 'lucide-react';
 import { PrimaryButton, GhostButton } from './Buttons';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-
-    const trustedUserImages = [
-        'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=50',
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=50',
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop'
-    ];
 
     const mainImageUrl = 'https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=1600&auto=format&fit=crop';
 
@@ -34,28 +28,17 @@ export default function Hero() {
                 <div className="max-w-6xl mx-auto px-4 min-h-screen max-md:w-screen max-md:overflow-hidden pt-32 md:pt-26 flex items-center justify-center">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <div className="text-left">
-                            <motion.a href="https://prebuiltui.com/tailwind-templates?ref=pixel-forge" className="inline-flex items-center gap-3 pl-3 pr-4 py-1.5 rounded-full bg-white/10 mb-6 justify-start"
+                            <motion.div className="inline-flex items-center gap-2 pl-3 pr-4 py-1.5 rounded-full bg-white/10 mb-6 justify-start"
                                 initial={{ y: 60, opacity: 0 }}
                                 whileInView={{ y: 0, opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
                             >
-                                <div className="flex -space-x-2">
-                                    {trustedUserImages.map((src, i) => (
-                                        <img
-                                            key={i}
-                                            src={src}
-                                            alt={`Client ${i + 1}`}
-                                            className="size-6 rounded-full border border-black/50"
-                                            width={40}
-                                            height={40}
-                                        />
-                                    ))}
-                                </div>
+                                <SparklesIcon className="size-4 text-violet-400" />
                                 <span className="text-xs text-gray-200/90">
-                                    Trusted by 10k+ users
+                                    Built for creators and brands
                                 </span>
-                            </motion.a>
+                            </motion.div>
 
                             <motion.h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-xl"
                                 initial={{ y: 60, opacity: 0 }}
