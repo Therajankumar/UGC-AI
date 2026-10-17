@@ -18,12 +18,14 @@ export default function Hero() {
         'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=100',
     ];
 
+    // product categories shown in the marquee (no real company names)
     const trustedLogosText = [
-        'Adobe',
-        'Figma',
-        'Canva',
-        'Shopify',
-        'Web flow'
+        'Fashion',
+        'Beauty & Skincare',
+        'Electronics',
+        'Home & Living',
+        'Fitness',
+        'Accessories'
     ];
 
     return (
